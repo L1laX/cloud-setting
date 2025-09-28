@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  caddy:
+    container_name: caddy
+    image: caddy:2
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    # extra_hosts:
+    #   - "host.docker.internal:host-gateway"
+    networks:
+      - caddy
+networks:
+  caddy:
+    external: true
+volumes:
+  caddy_data:
+  caddy_config:

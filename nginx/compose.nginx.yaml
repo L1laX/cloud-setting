@@ -1,0 +1,13 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    networks:
+      - caddy
+    labels:
+      # ปักธงไว้ให้ Watchtower รู้จัก
+      - "com.centurylinklabs.watchtower.enable=true"
+
+networks:
+  caddy:
+    external: true
